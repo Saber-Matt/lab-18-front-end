@@ -1,2 +1,2 @@
-/api/*  https://your-api-server.herokuapp.com/api/:splat 200!
+/api/*  https://pure-lowlands-73859.herokuapp.com/api/:splat 200!
 /*      /index.html   200
