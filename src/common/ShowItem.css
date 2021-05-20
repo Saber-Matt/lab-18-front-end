@@ -1,0 +1,43 @@
+.ShowItem a {
+    list-style: none;
+    background: white;
+    border: 1px solid darkgray;
+    padding: 20px 10px 30px;
+    position: relative;
+  
+    display: grid;
+    grid-template-rows: 50px 120px;
+    grid-gap: 10px;
+  
+    justify-items: center;
+  
+    text-decoration: none;
+    color: inherit;
+    cursor: pointer;
+  }
+  
+  .ShowItem h2 {
+    margin: 3px 0;
+    text-align: center;
+    font-size: .9rem;
+    line-height: 1.2;
+    font-weight: bolder;
+  }
+  
+  .ShowItem img {
+    height: 100%;
+    width: 100%;
+    object-fit: contain;
+  }
+  
+  .ShowItem .favorite {
+    position: absolute;
+    bottom: 5px;
+    right: 5px;
+    border: 0;
+    background: unset;
+    font-size: 1.2rem;
+    cursor: pointer;
+  }
+  
+  

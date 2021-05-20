@@ -17,7 +17,7 @@ export async function signIn(credentials) {
 
   return response.body;
 }
-export async function getMovies(search) {
+export async function getShows(search) {
   const response = await request
     .get('/api/shows')
     .set('Authorization', TOKEN)
