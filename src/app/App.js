@@ -11,6 +11,7 @@ import {
 } from 'react-router-dom';
 import './App.css';
 import ShowPage from '../shows/ShowPage';
+import FavoritesPage from '../favorites/FavoritesPage';
 
 class App extends Component {
   state = {
@@ -42,10 +43,18 @@ class App extends Component {
                 )}
               />
 
-              <Route path="/shows"
+              <Route path="/shows" exact={true}
                 render={routerProps => (
                   token 
                     ? <ShowPage {...routerProps}/>
+                    : <Redirect to='/auth' />
+                )}
+              />
+
+              <Route path="/favorites" exact={true}
+                render={routerProps => (
+                  token 
+                    ? <FavoritesPage {...routerProps}/>
                     : <Redirect to='/auth' />
                 )}
               />
