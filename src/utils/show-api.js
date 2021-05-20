@@ -25,3 +25,12 @@ export async function getShows(search) {
 //superagent request so want the body
   return response.body;
 }
+
+export async function postFavorite(show) {
+  const response = await request
+    .post('/api/favorites')
+    .set('Authorization', TOKEN)
+    .send(show);
+
+  return response.body;
+}

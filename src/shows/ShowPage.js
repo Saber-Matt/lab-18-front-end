@@ -2,7 +2,7 @@ import { Component } from 'react';
 import ShowList from '../common/ShowList';
 import './ShowPage.css';
 import ShowSearch from './ShowSearch';
-import { getShows } from '../utils/show-api';
+import { getShows, postFavorite } from '../utils/show-api';
 
 export default class ShowPage extends Component {
   state = {
@@ -24,7 +24,9 @@ export default class ShowPage extends Component {
   }
 
   handleFavorite = async (show) => {
-    console.log('favorite', show);
+    const favorite = await postFavorite(show);
+    console.log(favorite);
+    
   }
 
   render() {
