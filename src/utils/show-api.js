@@ -34,3 +34,11 @@ export async function postFavorite(show) {
 
   return response.body;
 }
+export async function getFavorites() {
+  const response = await request
+    .get('/api/me/favorites')
+    .set('Authorization', TOKEN);
+
+  return response.body;
+}
+
