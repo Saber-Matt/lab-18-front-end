@@ -23,13 +23,17 @@ export default class ShowPage extends Component {
     
   }
 
+  handleFavorite = async (show) => {
+    console.log('favorite', show);
+  }
+
   render() {
     const { shows } = this.state;
     
     return (
       <div className="ShowPage">
         <ShowSearch onSearch={this.handleSearch}/>
-        <ShowList shows={shows}/>
+        <ShowList onFavorite={this.handleFavorite} shows={shows}/>
         
       </div>
     );

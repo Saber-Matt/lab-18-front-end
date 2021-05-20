@@ -5,12 +5,12 @@ import ShowItem from './ShowItem';
 export default class ShowList extends Component {
   
   render() {
-    const { shows } = this.props;
+    const { shows, onFavorite } = this.props;
     console.log(shows);
     return (
       <ul className="ShowList">
         {shows.map((show) => {
-          return <ShowItem key={show.showId} show={show}></ShowItem>;
+          return <ShowItem key={show.showId} show={show} onFavorite={onFavorite}></ShowItem>;
         })}
       </ul>
     );
