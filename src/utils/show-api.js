@@ -1,5 +1,7 @@
 import request from 'superagent';
 
+const TOKEN = window.localStorage.getItem('TOKEN');
+
 export async function signUp(credentials) {
   const response = await request
     .post('/api/auth/signup')
@@ -13,5 +15,13 @@ export async function signIn(credentials) {
     .post('/api/auth/signin')
     .send(credentials);
 
+  return response.body;
+}
+export async function getMovies(search) {
+  const response = await request
+    .get('/api/shows')
+    .set('Authorization', TOKEN)
+    .query({ search: search });
+//superagent request so want the body
   return response.body;
 }
