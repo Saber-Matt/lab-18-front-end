@@ -10,6 +10,7 @@ import {
   Redirect
 } from 'react-router-dom';
 import './App.css';
+import ShowPage from '../shows/ShowPage';
 
 class App extends Component {
   state = {
@@ -20,6 +21,7 @@ class App extends Component {
     window.localStorage.setItem('TOKEN', user.token)
   )
   render() {
+    const { token } = this.state;
     return (
       <div className="App">
         <Router>
@@ -40,9 +42,11 @@ class App extends Component {
                 )}
               />
 
-              <Route path="/resources/:id"
+              <Route path="/shows"
                 render={routerProps => (
-                  <div>Implement a page for id {routerProps.match.params.id}</div>
+                  token 
+                    ? <ShowPage {...routerProps}/>
+                    : <Redirect to='/auth' />
                 )}
               />
 
