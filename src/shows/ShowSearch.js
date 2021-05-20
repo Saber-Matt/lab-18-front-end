@@ -3,12 +3,28 @@ import './ShowSearch.css';
 
 export default class ShowSearch extends Component {
   
-  render() {
-    return (
-      <div className="ShowSearch">
-        Show ShowSearch
-      </div>
-    );
-  }
+    state = {
+      search: ''
+    }
+    handleSearchChange = (e) => {
+      this.setState({ search: e.target.value });
+    }
+    handleSubmit = e => {
+      const { onSearch } = this.props;
+      const { search } = this.state;
+      e.preventDefault();
+      onSearch(search);
+    }
+    render() {
+      const { search } = this.state;
+      return (
+        <form className="ShowSearch" onSubmit={this.handleSubmit}>
+          <input value={search} onChange={this.handleSearchChange}>
+
+          </input>
+          <button>Search</button>
+        </form>
+      );
+    }
 
 }

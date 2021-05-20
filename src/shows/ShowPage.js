@@ -5,11 +5,14 @@ import ShowSearch from './ShowSearch';
 
 
 export default class ShowPage extends Component {
-  
+
+  handleSearch = async (search) => {
+    console.log(search);
+  }
   render() {
     return (
       <div className="ShowPage">
-        <ShowSearch/>
+        <ShowSearch onSearch={this.handleSearch}/>
         <ShowList/>
         
       </div>
