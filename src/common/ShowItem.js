@@ -3,13 +3,13 @@ import './ShowItem.css';
 
 export default class ShowItem extends Component {
   state = {
-    isFavorite: Boolean(this.props.show.id)
+    isFavorite: this.props.show.id ? true : false
   }
   handleFavoriteClick = async () => {
     const { onFavorite, show } = this.props;
     await onFavorite(show);
-    //soo this needs to be async??? or it wont register updates fast enough
-    this.setState({ isFavorite: Boolean(this.props.show.id) });
+    //soo this needs to be async??? or it wont register updates fast enough...
+    this.setState({ isFavorite: this.props.show.id ? true : false });
   };
   render() {
     const { show } = this.props;
@@ -20,6 +20,7 @@ export default class ShowItem extends Component {
         <h2>{show.title}</h2>
         <img src={show.image} alt={show.title}></img>
         <h3> {show.rating && `rating: ${show.rating}`}</h3>
+        
         <button onClick={this.handleFavoriteClick}>{isFavorite ? 'Un-favorite' : 'favorite'}</button>
       </li>
     );

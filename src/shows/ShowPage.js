@@ -9,13 +9,26 @@ export default class ShowPage extends Component {
     shows: [],
     favorites: []
   }
+
+  async componentDidMount() {
+    const favorites = await getFavorites();
+    this.setState({ favorites: favorites });
+  }
   handleSearch = async (search) => {
     
 
     try {
+      const { favorites } = this.state;
       const shows = await getShows(search);
-      const favorites = await getFavorites();
-      this.setState({ shows: shows, favorites: favorites });
+      const updatedShows = shows.map((show) => {
+        const matchingShow = favorites.find(favorite => favorite.showId === show.showId);
+        //find returns undefined if no match is found!!!!
+        console.log('matching', matchingShow, 'show', show);
+        return matchingShow ? matchingShow : show;
+      });
+      console.log(updatedShows);
+   
+      this.setState({ shows: updatedShows });
     }
 
     catch (err) {
