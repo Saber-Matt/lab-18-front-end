@@ -22,7 +22,7 @@ export async function getShows(search) {
     .get('/api/shows')
     .set('Authorization', TOKEN)
     .query({ search: search });
-//superagent request so want the body
+  //superagent request so want the body
   return response.body;
 }
 
@@ -42,3 +42,11 @@ export async function getFavorites() {
   return response.body;
 }
 
+export async function deleteFavorite(show) {
+  const response = await request
+
+    .delete(`/api/favorites/${show.id}`)
+    .set('Authorization', TOKEN);
+
+  return response.body;
+};
