@@ -22,7 +22,7 @@ class App extends Component {
     this.setState({ token: user.token });
     
     window.localStorage.setItem('TOKEN', user.token);
-    window.location.reload();
+  
 
     
   }
