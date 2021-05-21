@@ -24,6 +24,7 @@ export default class ShowPage extends Component {
         const matchingShow = favorites.find(favorite => favorite.showId === show.showId);
         //find returns undefined if no match is found!!!!
         console.log('matching', matchingShow, 'show', show);
+        //if match return match, else return show
         return matchingShow ? matchingShow : show;
       });
       console.log(updatedShows);
