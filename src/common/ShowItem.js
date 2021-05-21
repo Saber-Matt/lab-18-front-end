@@ -3,12 +3,12 @@ import './ShowItem.css';
 
 export default class ShowItem extends Component {
   state = {
-    isFavorite: Boolean(this.props.show.id)
+    isFavorite: this.props.show.id ? true : false
   }
-  handleFavoriteClick = () => {
+  handleFavoriteClick = async () => {
     const { onFavorite, show } = this.props;
-    onFavorite(show);
-    this.setState({ isFavorite: !this.state.isFavorite });
+    await onFavorite(show);
+    this.setState({ isFavorite: this.props.show.id ? true : false });
   };
   render() {
     const { show } = this.props;

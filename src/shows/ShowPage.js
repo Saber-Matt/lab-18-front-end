@@ -25,7 +25,7 @@ export default class ShowPage extends Component {
 
   handleFavorite = async (show) => {
     const favorite = await postFavorite(show);
-    console.log(favorite);
+    console.log('added', favorite);
     
   }
 

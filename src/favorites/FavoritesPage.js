@@ -21,26 +21,45 @@ export default class FavoritesPage extends Component {
   }
 
   handleFavorite = async (show) => {
-
+    const { favorites } = this.state;
     try {
       if (show.deleted) {
-        const { favorites } = this.state;
+        
         const newFavorite = await postFavorite(show);
+        console.log('added', newFavorite);
         const updatedShows = favorites.map(f => {
           return f.id === show.id ? newFavorite : f;
         });
         this.setState({ favorites: updatedShows });
       }
       else {
-        await deleteFavorite(show);
-        show.deleted = true;
+        const deletedShow = await deleteFavorite(show);
+        const updatedShows = favorites.map(f => {
+          return f.id === show.id ? {
+            title: f.title,
+            showId: f.showId,
+            image: f.image,
+            rating: f.rating,
+            description: f.description,
+            deleted: true
+
+          } :
+            f;
+
+        });
+        
+        this.setState({ favorites: updatedShows });
+        console.log('deleted', deletedShow);
+        console.log('state', this.state.favorites);
+
+        
       }
 
     }
     catch (err) {
       console.log(err.message);
     }
-    console.log(show);
+   
   }
   render() {
     const { favorites } = this.state;
