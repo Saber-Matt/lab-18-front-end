@@ -18,9 +18,11 @@ class App extends Component {
     token: window.localStorage.getItem('TOKEN')
     //we may have to set state here later. But it works now... :p
   }
-  handleUser = (user) => (
-    window.localStorage.setItem('TOKEN', user.token)
-  )
+  handleUser = (user) => {
+    window.localStorage.setItem('TOKEN', user.token);
+
+    this.setState({ token: user.token });
+  }
   render() {
     const { token } = this.state;
     return (
