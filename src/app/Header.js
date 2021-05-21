@@ -8,10 +8,12 @@ class Header extends Component {
     return (
       <header className="Header">
 
-        <h1>React App</h1>
+        <h1>Show Search</h1>
         <nav>
           <NavLink to='/auth'>SignIn</NavLink>
           <NavLink to='/'>Home</NavLink>
+          <NavLink to='/shows'>Show Search</NavLink>
+          <NavLink to='/favorites'>Favorites</NavLink>
         </nav>
 
       </header>

@@ -8,8 +8,7 @@ export default class ShowItem extends Component {
   handleFavoriteClick = () => {
     const { onFavorite, show } = this.props;
     onFavorite(show);
-
-      
+    this.setState({ isFavorite: !this.state.isFavorite });
   };
   render() {
     const { show } = this.props;

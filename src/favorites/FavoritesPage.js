@@ -1,7 +1,7 @@
 import { Component } from 'react';
 import './FavoritesPage.css';
 import ShowList from '../common/ShowList';
-import { getFavorites, deleteFavorite } from '../utils/show-api.js';
+import { getFavorites, deleteFavorite, postFavorite } from '../utils/show-api.js';
 
 
 export default class FavoritesPage extends Component {
@@ -23,7 +23,18 @@ export default class FavoritesPage extends Component {
   handleFavorite = async (show) => {
 
     try {
-      await deleteFavorite(show);
+      if (show.deleted) {
+        const { favorites } = this.state;
+        const newFavorite = await postFavorite(show);
+        const updatedShows = favorites.map(f => {
+          return f.id === show.id ? newFavorite : f;
+        });
+        this.setState({ favorites: updatedShows });
+      }
+      else {
+        await deleteFavorite(show);
+        show.deleted = true;
+      }
 
     }
     catch (err) {
