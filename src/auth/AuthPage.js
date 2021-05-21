@@ -9,7 +9,7 @@ export default class AuthPage extends Component {
     name: '',
     email: '',
     password: '',
-    error: ''
+   
   }
 
   handleSwitch = () => {
@@ -22,7 +22,7 @@ export default class AuthPage extends Component {
 
     e.preventDefault();
 
-    this.setState({ error: '' });
+  
 
     try {
       const action = isSignUp ? signUp : signIn;
@@ -31,9 +31,10 @@ export default class AuthPage extends Component {
       onUser(user);
 
       history.push('/');
+      window.location.reload();
     }
     catch (err) {
-      this.setState({ error: err.error });
+      console.log(err.error);
     }
 
   }
@@ -51,7 +52,7 @@ export default class AuthPage extends Component {
   }
 
   render() {
-    const { isSignUp, name, email, password, error } = this.state;
+    const { isSignUp, name, email, password } = this.state;
 
     return (
       <form className="AuthPage" onSubmit={this.handleSubmit}>
@@ -93,7 +94,6 @@ export default class AuthPage extends Component {
           </button>
         </p>
 
-        {error && <p>{error}</p>}
       </form>
     );
   }
