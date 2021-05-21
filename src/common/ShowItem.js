@@ -3,12 +3,13 @@ import './ShowItem.css';
 
 export default class ShowItem extends Component {
   state = {
-    isFavorite: this.props.show.id ? true : false
+    isFavorite: Boolean(this.props.show.id)
   }
   handleFavoriteClick = async () => {
     const { onFavorite, show } = this.props;
     await onFavorite(show);
-    this.setState({ isFavorite: this.props.show.id ? true : false });
+    //soo this needs to be async??? or it wont register updates fast enough
+    this.setState({ isFavorite: Boolean(this.props.show.id) });
   };
   render() {
     const { show } = this.props;
